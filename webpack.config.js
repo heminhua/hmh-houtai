@@ -1,5 +1,5 @@
 var path=require('path')
-var htmlWebapckPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 配置文件要求我们必须导出一个配置对象
 module.exports={
