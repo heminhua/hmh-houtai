@@ -11,15 +11,11 @@ import 'normalize.css'
 
 import axios from 'axios' //不是vue 插件，导入之后只能 在当前模块使用
 import api, { domain } from './js/api.js'
-
-
-
 //配置默认域名，这样请求的时候就不用在url里每次手动添加域名了
 axios.defaults.baseURL = domain;
 //因为我们调用的接口跨域了，默认情况下接口给我们设置cookei无效，为了让它有效，我们必须添加此配置
 axios.defaults.withCredentials = true
-
-//为了使用方便，指导axios和api 添加到Vue原型，将来vue组件就可以直接使用
+//为了使用方便，把axios和api 添加到Vue原型，将来vue组件就可以直接使用
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api
 
