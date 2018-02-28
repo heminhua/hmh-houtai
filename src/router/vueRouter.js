@@ -11,18 +11,18 @@ import Shopcart from '../component/admin/shopcart/Shopcart.vue'
 Vue.use(router)//Vue的插件必须要启用才可以用的
 
 //购物车页面路由配置
-const shopcart=[
-    {name:'shopcart',path:'shopcart',component:Shopcart}
+const shopcart = [
+    { name: 'shopcart', path: 'shopcart', component: Shopcart }
 ]
 
 
 //导出路由实例
 export default new router({
-    routes:[
+    routes: [
         //登录
-        {name:'login',path:'/login',component:Login},
+        { name: 'login', path: '/login', component: Login },
         //后台管理
-        {name:'admin',path:'/admin',component:Admin,children:[...shopcart]},
+        { name: 'admin', path: '/admin', component: Admin, children: [...shopcart] },
     ]
-    
+
 })
