@@ -6,8 +6,10 @@ import App from './component/App.vue'
 
 //引入路由
 import router from './router/vueRouter.js'
-//引入初始化css
+//引入初始化css模块
 import 'normalize.css'
+
+import './less/index.less'
 
 import axios from 'axios' //不是vue 插件，导入之后只能 在当前模块使用
 import api, { domain } from './js/api.js'
