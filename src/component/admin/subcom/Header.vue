@@ -11,8 +11,7 @@
                 <!-- <el-button type="text">点击打开 Message Box</el-button> -->
                 
                 <el-dropdown-menu slot="dropdown">
-                   
-                    <el-dropdown-item command="a" @click="changePwd">修改密码</el-dropdown-item>
+                    <el-dropdown-item command="a">修改密码</el-dropdown-item>
                     <el-dropdown-item command="b">注销登录</el-dropdown-item>
 
                 </el-dropdown-menu>
@@ -52,18 +51,14 @@ export default {
         }
       });
     },
-    /* 修改密码的逻辑 */
-    changePwd() {
-      this.isShow = !this.isShow;
-    },
+   
     /* 执行 */
     handleCommand(command) {
       if (command == "b") {
+        // console.log('登出');
         this.logout();
       }
-      if (command == "a") {
-        this.changePwd();
-      }
+     
     }
   }
 };

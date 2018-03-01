@@ -64,7 +64,7 @@ export default {
     login() {
       this.$http.post(this.$api.login, this.ruleForm2).then(res => {
         // this.$alert("登录成功");
-        console.log(res);
+        // console.log(res);
         if (res.data.status == 0) {
           this.$alert("登录成功", "提示", {
             callback: () => {
@@ -113,7 +113,7 @@ export default {
     border-radius: 5px;
     top: 50%;
     transform: translateY(-50%);
-    border: 1px solid rgb(55, 225, 255);
+    border: 1px solid rgb(55, 255, 65);
     .el-form-item__label {
       margin: 0;
     }
