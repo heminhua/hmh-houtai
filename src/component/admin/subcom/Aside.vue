@@ -1,41 +1,30 @@
 <template>
     <div class="aside">
 
-        <el-col :span="24">
-            <h5>知识分享系统</h5>
-            <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#267cb7" text-color="#fff" active-text-color="#ffd04b">
-                <!-- index 1 -->
-                <el-submenu index="1">
-                    <template slot="title">
-                        <i class="el-icon-message"></i>
-                        <span class="navigation">导航一</span>
-                        <!-- <i class=el-icon-arrow-down></i> -->
-                    </template>
-                    <el-menu-item-group>
-                        <el-menu-item index="1-1">选项1</el-menu-item>
-                        <el-menu-item index="1-2">选项2</el-menu-item>
-                        <el-menu-item index="1-3">选项3</el-menu-item>
-                        <el-menu-item index="1-4">选项1</el-menu-item>
-                    </el-menu-item-group>
+       <div class="logo">
+           <img src="../../../images/share.png" alt="">
+       </div>
+        <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#267cb7" text-color="#fff" active-text-color="#f00">
+            <!-- index 1 -->
+            <el-submenu v-for="item in menu" :key="item.title" :index="item.title">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span class="navigation">{{item.title}}</span>
+                    <!-- <i class=el-icon-arrow-down></i> -->
+                </template>
+                <el-menu-item v-for="subItem in item.submenu" :key="subItem.text" :index="subItem.text">
 
-                </el-submenu>
-                <!-- index 2 -->
-                <el-submenu index="2">
-                    <template slot="title">
-                        <i class="el-icon-message"></i>
-                        <span class="navigation">导航二</span>
-                        <!-- <i class=el-icon-arrow-down></i> -->
-                    </template>
-                    <el-menu-item-group>
-                        <el-menu-item index="2-2">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                        <el-menu-item index="2-4">选项4</el-menu-item>
-                    </el-menu-item-group>
+                    <!-- 每个子title都是一个a链接，可以点击，所以使用router-link,设置to属性 -->
+                    <router-link :to="subItem.path">
+                        <i class="el-icon-document"></i>
+                        <span>{{subItem.text}}</span>
+                    </router-link>
 
-                </el-submenu>
-            </el-menu>
-        </el-col>
+                </el-menu-item>
+
+            </el-submenu>
+
+        </el-menu>
 
     </div>
 </template>
@@ -43,28 +32,88 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      menu: [
+        {
+          title: "学员问题",
+          submenu: [
+            { text: "内容管理", path: "/admin/goods/content/list" },
+            { text: "类别管理", path: "/admin/goods/content/category" },
+            { text: "评论管理", path: "/admin" }
+          ]
+        },
+        {
+          title: "前端技术",
+          submenu: [
+            { text: "内容管理", path: "/admin" },
+            { text: "类别管理", path: "/admin" },
+            { text: "评论管理", path: "/admin" }
+          ]
+        },
+        {
+          title: "难点答疑",
+          submenu: [
+            { text: "内容管理", path: "/admin" },
+            { text: "类别管理", path: "/admin" },
+            { text: "评论管理", path: "/admin" }
+          ]
+        },
+        {
+          title: "资源下载",
+          submenu: [
+            { text: "内容管理", path: "/admin" },
+            { text: "类别管理", path: "/admin" },
+            { text: "评论管理", path: "/admin" }
+          ]
+        },
+        {
+          title: "商品管理",
+          submenu: [
+            { text: "内容管理", path: "/admin" },
+            { text: "类别管理", path: "/admin" },
+            { text: "评论管理", path: "/admin" }
+          ]
+        },
+        {
+          title: "订单管理",
+          submenu: [{ text: "订单列表", path: "/admin" }]
+        }
+      ]
+    };
   },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      //   console.log(key, keyPath);
     }
   }
 };
 </script>
 
 <style scoped lang="less">
-.aside {
-  text-align: center;
-  .el-menu {
-    border-right: none;
-    .el-icon-message,
-    .el-icon-arrow-down {
-      color: #fff;
+ // 让导航列表撑满屏幕
+    .aside {
+        height: 100%;
+        text-align: left;
+
+        // logo居中显示
+        .logo {
+            text-align: center;
+        }
+
+        // 去掉导航展开时右边的1像素边框
+        .el-menu {
+            border-right: 0;
+
+            // 去掉导航列表的最小宽度限制
+            &-item {
+                min-width: 0;
+            }
+            .el-icon-menu{
+                color:#fff;
+            }
+        }
     }
-  }
-}
 </style>

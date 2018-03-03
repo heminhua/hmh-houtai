@@ -11,12 +11,15 @@
           <app-header></app-header>
         </el-header>
         <!-- 主体内容 -->
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 主体 -->
+          <!-- 变化的后台管理子页面 -->
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
 
-    <!-- 变化的后台管理子页面 -->
-    <router-view></router-view>
+
   </div>
 </template>
 
@@ -28,7 +31,7 @@ export default {
   //注册子组件
   components: {
     appHeader: Header,
-    appAside: Aside
+    appAside: Aside,
   },
   data() {
     return {
@@ -60,7 +63,7 @@ export default {
 
   .el-main {
     background-color: #ffffff;
-    color: rgb(255, 255, 255);
+    color: #000;
     height: 100%;
   }
 }
